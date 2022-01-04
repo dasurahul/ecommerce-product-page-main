@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import logo from "../logo.svg";
 import cart from "../icon-cart.svg";
+import thumbnail from "../image-product-1-thumbnail.jpg";
+import deleteIcon from "../icon-delete.svg";
 import avatar from "../image-avatar.png";
 import styled from "styled-components";
 
 const Navbar = () => {
-  const count = 0;
+  const productName = "Fall Limited Edition Sneakers";
+  const productPrice = 125.0;
+  const count = 3;
   const [show, setShow] = useState(false);
   const open = () => {
     setShow(true);
@@ -41,10 +45,33 @@ const Navbar = () => {
             <Cart src={cart} alt="cart" />
             <Basket show={show}>
               <Title>Cart</Title>
-              {count === 0 && (
+              {count === 0 ? (
                 <Empty>
                   <Text>Your cart is empty.</Text>
                 </Empty>
+              ) : (
+                <FilledBasket>
+                  <Flex
+                    justifyContent="space-between"
+                    alignItems="center"
+                    gap="1rem"
+                  >
+                    <Thumbnail src={thumbnail} alt="thumbnail" />
+                    <div>
+                      <ProductName>{productName}</ProductName>
+                      <Calculation>
+                        ${productPrice.toFixed(2)} x {count}
+                        <TotalPrice>
+                          ${(productPrice * count).toFixed(2)}
+                        </TotalPrice>
+                      </Calculation>
+                    </div>
+                    <IconButton>
+                      <DeleteIcon src={deleteIcon} alt="delete" />
+                    </IconButton>
+                  </Flex>
+                  <CheckoutButton>Checkout</CheckoutButton>
+                </FilledBasket>
               )}
             </Basket>
           </CartContainer>
@@ -151,7 +178,7 @@ const Basket = styled.div`
   top: calc(100% + 1.5rem);
   transform: translateX(-50%) scale(0);
   transform-origin: top;
-  width: 25rem;
+  width: 22rem;
   background-color: var(--white-color);
   box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.2);
   border-radius: 0.25rem;
@@ -167,12 +194,13 @@ const Basket = styled.div`
 
 const Title = styled.h3`
   text-align: left;
+  color: var(--very-dark-blue-color);
   border-bottom: 0.1rem solid var(--grayish-blue-color);
   padding: 1.5rem;
 `;
 
 const Empty = styled.div`
-  height: 12rem;
+  height: 11rem;
   display: grid;
   place-items: center;
 `;
@@ -180,6 +208,52 @@ const Empty = styled.div`
 const Text = styled.p`
   color: var(--dark-grayish-blue-color);
   font-weight: bold;
+`;
+
+const FilledBasket = styled.div`
+  min-height: 11rem;
+  padding: 1.5rem;
+`;
+
+const Thumbnail = styled.img`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.25rem;
+`;
+
+const ProductName = styled.p`
+  color: var(--dark-grayish-blue-color);
+  margin-bottom: 0.5rem;
+`;
+
+const Calculation = styled.p`
+  text-align: left;
+  color: var(--dark-grayish-blue-color);
+  display: flex;
+  gap: 0.5rem;
+`;
+
+const TotalPrice = styled.p`
+  color: var(--very-dark-blue-color);
+  font-weight: bold;
+`;
+
+const DeleteIcon = styled.img``;
+
+const CheckoutButton = styled.button`
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--orange-color);
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Avatar = styled.img`
