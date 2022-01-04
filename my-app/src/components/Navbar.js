@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../logo.svg";
 import cart from "../icon-cart.svg";
 import avatar from "../image-avatar.png";
 import styled from "styled-components";
 
 const Navbar = () => {
+  const count = 0;
+  const [show, setShow] = useState(false);
+  const open = () => {
+    setShow(true);
+  };
+  const close = () => {
+    setShow(false);
+  };
   return (
     <Container>
       <Flex alignItems="center" gap="3rem" height="100%">
@@ -28,8 +36,22 @@ const Navbar = () => {
         </Nav>
       </Flex>
       <Flex alignItems="center" gap="2.5rem">
-        <img src={cart} alt="cart" />
-        <Avatar src={avatar} alt="avatar" />
+        <IconButton onMouseEnter={open} onMouseLeave={close}>
+          <CartContainer count={count}>
+            <Cart src={cart} alt="cart" />
+            <Basket show={show}>
+              <Title>Cart</Title>
+              {count === 0 && (
+                <Empty>
+                  <Text>Your cart is empty.</Text>
+                </Empty>
+              )}
+            </Basket>
+          </CartContainer>
+        </IconButton>
+        <IconButton>
+          <Avatar src={avatar} alt="avatar" />
+        </IconButton>
       </Flex>
     </Container>
   );
@@ -92,6 +114,72 @@ const NavLink = styled.a`
   &:hover::after {
     transform: scale(1);
   }
+`;
+
+const IconButton = styled.button`
+  background-color: transparent;
+  padding: 0;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const CartContainer = styled.div`
+  position: relative;
+
+  &::after {
+    content: "${(props) => props.count}";
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: var(--orange-color);
+    color: var(--white-color);
+    height: 1rem;
+    width: 1.2rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  }
+`;
+
+const Cart = styled.img``;
+
+const Basket = styled.div`
+  position: absolute;
+  top: calc(100% + 1.5rem);
+  transform: translateX(-50%) scale(0);
+  transform-origin: top;
+  width: 25rem;
+  background-color: var(--white-color);
+  box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  opacity: 0;
+  transition: transform 0.2s, opacity 0.2s;
+  ${({ show }) =>
+    show &&
+    `
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  `}
+`;
+
+const Title = styled.h3`
+  text-align: left;
+  border-bottom: 0.1rem solid var(--grayish-blue-color);
+  padding: 1.5rem;
+`;
+
+const Empty = styled.div`
+  height: 12rem;
+  display: grid;
+  place-items: center;
+`;
+
+const Text = styled.p`
+  color: var(--dark-grayish-blue-color);
+  font-weight: bold;
 `;
 
 const Avatar = styled.img`
