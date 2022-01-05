@@ -6,16 +6,20 @@ import deleteIcon from "../icon-delete.svg";
 import avatar from "../image-avatar.png";
 import styled from "styled-components";
 
-const Navbar = () => {
-  const productName = "Fall Limited Edition Sneakers";
-  const productPrice = 125.0;
-  const count = 3;
+const Navbar = (props) => {
+  const productName = props.productName;
+  const productPrice = props.productPrice;
+  const count = props.count;
   const [show, setShow] = useState(false);
   const open = () => {
     setShow(true);
   };
   const close = () => {
     setShow(false);
+  };
+  const checkout = () => {
+    props.removeItems();
+    alert("Thanks for shopping");
   };
   return (
     <Container>
@@ -70,7 +74,7 @@ const Navbar = () => {
                       <DeleteIcon src={deleteIcon} alt="delete" />
                     </IconButton>
                   </Flex>
-                  <CheckoutButton>Checkout</CheckoutButton>
+                  <CheckoutButton onClick={checkout}>Checkout</CheckoutButton>
                 </FilledBasket>
               )}
             </Basket>

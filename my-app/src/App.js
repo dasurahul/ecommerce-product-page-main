@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import styled from "styled-components";
 
@@ -7,10 +7,32 @@ const App = () => {
   const productNewPrice = 125.0;
   const discount = 50;
   const productOldPrice = 250.0;
-  const count = 3;
+  const [count, setCount] = useState(0);
+  const [items, setItems] = useState(0);
+  const increase = () => {
+    setCount((count) => count + 1);
+  };
+  const decrease = () => {
+    if (count > 0) setCount((count) => count - 1);
+  };
+  const reset = () => {
+    setCount(0);
+  };
+  const addItems = () => {
+    setItems((items) => items + count);
+    reset();
+  };
+  const removeItems = () => {
+    setItems(0);
+  };
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar
+        productName={productName}
+        productPrice={productNewPrice}
+        count={items}
+        removeItems={removeItems}
+      />
       <Main>
         <Left>Left</Left>
         <Right>
@@ -28,11 +50,11 @@ const App = () => {
           <ProductOldPrice>${productOldPrice.toFixed(2)}</ProductOldPrice>
           <Flex gap="1rem">
             <Counter>
-              <DecreaseButton>-</DecreaseButton>
+              <DecreaseButton onClick={decrease}>-</DecreaseButton>
               <Count>{count}</Count>
-              <IncreaseButton>+</IncreaseButton>
+              <IncreaseButton onClick={increase}>+</IncreaseButton>
             </Counter>
-            <AddToCartButton>
+            <AddToCartButton onClick={addItems}>
               <CartContainer>
                 <Cart width="22" height="20" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -117,6 +139,10 @@ const ProductOldPrice = styled.div`
 `;
 
 const Counter = styled.div`
+  width: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--light-grayish-blue-color);
   padding: 1rem;
   border-radius: 0.5rem;
@@ -141,7 +167,6 @@ const IncreaseButton = styled(DecreaseButton)``;
 const Count = styled.span`
   color: var(--very-dark-blue-color);
   font-weight: bold;
-  margin: 0.25rem 2rem;
 `;
 
 const AddToCartButton = styled.button`
