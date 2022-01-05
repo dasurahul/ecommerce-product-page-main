@@ -2,6 +2,7 @@
 
 :root {
   --orange-color: hsl(26, 100%, 55%);
+  --light-orange-color: hsl(26, 100%, 75%);
   --pale-orange-color: hsl(25, 100%, 94%);
   --very-dark-blue-color: hsl(220, 13%, 13%);
   --dark-grayish-blue-color: hsl(219, 9%, 45%);
