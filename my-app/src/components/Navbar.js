@@ -181,7 +181,7 @@ const Basket = styled.div`
   width: 22rem;
   background-color: var(--white-color);
   box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.2);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   opacity: 0;
   transition: transform 0.2s, opacity 0.2s;
   ${({ show }) =>
