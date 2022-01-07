@@ -2,7 +2,7 @@
 
 - [page](https://sneakers-company.netlify.app)
 
-![Sneakers Company](./images/page.png)
+![Sneakers Company](./my-app/src/page.png)
 
 ## Built with 
 - HTML
