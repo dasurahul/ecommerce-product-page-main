@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
+import image from "./image-product-1.jpg";
+import thumbnail1 from "./image-product-1-thumbnail.jpg";
+import thumbnail2 from "./image-product-2-thumbnail.jpg";
+import thumbnail3 from "./image-product-3-thumbnail.jpg";
+import thumbnail4 from "./image-product-4-thumbnail.jpg";
 import styled from "styled-components";
 
 const App = () => {
@@ -34,7 +39,15 @@ const App = () => {
         removeItems={removeItems}
       />
       <Main>
-        <Left>Left</Left>
+        <Left>
+          <ProductImage src={image} alt="product" />
+          <ImagesContainer>
+            <ProductThumbnail src={thumbnail1} alt="thumbnail" />
+            <ProductThumbnail src={thumbnail2} alt="thumbnail" />
+            <ProductThumbnail src={thumbnail3} alt="thumbnail" />
+            <ProductThumbnail src={thumbnail4} alt="thumbnail" />
+          </ImagesContainer>
+        </Left>
         <Right>
           <CompanyName>SNEAKER COMPANY</CompanyName>
           <ProductName>{productName}</ProductName>
@@ -76,19 +89,40 @@ const App = () => {
 export default App;
 
 const Main = styled.div`
-  width: 80%;
+  width: 60%;
   margin-inline: auto;
   height: calc(100vh - 6rem);
-  display: flex;
+  display: grid;
+  justify-items: center;
   align-items: center;
+  grid-template-columns: repeat(2, 1fr);
 `;
 
 const Left = styled.div`
-  flex: 1;
+  max-width: 28rem;
 `;
-const Right = styled.div`
-  flex: 1;
+
+const ProductImage = styled.img`
+  width: 100%;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
 `;
+
+const ImagesContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ProductThumbnail = styled.img`
+  width: 6rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    opacity: 0.5;
+  }
+`;
+
+const Right = styled.div``;
 
 const CompanyName = styled.h5`
   color: var(--orange-color);
