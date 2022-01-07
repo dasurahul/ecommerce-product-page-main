@@ -91,7 +91,7 @@ const Navbar = (props) => {
 export default Navbar;
 
 const Container = styled.div`
-  width: 80%;
+  width: 65%;
   margin-inline: auto;
   height: 6rem;
   display: flex;
