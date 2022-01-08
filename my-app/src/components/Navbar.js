@@ -21,6 +21,9 @@ const Navbar = (props) => {
     props.removeItems();
     alert("Thanks for shopping");
   };
+  const deleteItems = () => {
+    props.removeItems();
+  };
   return (
     <Container>
       <Flex alignItems="center" gap="3rem" height="100%">
@@ -70,7 +73,7 @@ const Navbar = (props) => {
                         </TotalPrice>
                       </Calculation>
                     </div>
-                    <IconButton>
+                    <IconButton onClick={deleteItems}>
                       <DeleteIcon src={deleteIcon} alt="delete" />
                     </IconButton>
                   </Flex>
