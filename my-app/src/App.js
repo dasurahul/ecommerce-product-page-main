@@ -184,7 +184,7 @@ const IconPrevious = styled.button`
   border: none;
   position: absolute;
   top: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -198,7 +198,7 @@ const IconPrevious = styled.button`
 
 const IconNext = styled(IconPrevious)`
   right: 0;
-  transform: translateX(50%);
+  transform: translate(50%, -50%);
 `;
 
 const ImagesContainer = styled.div`
