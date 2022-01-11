@@ -96,7 +96,7 @@ const CompanyName = styled.h5`
 
 const ProductName = styled.h1`
   color: var(--very-dark-blue-color);
-  font-size: 3rem;
+  font-size: 2.25rem;
   line-height: 1;
   margin-bottom: 2rem;
 `;
@@ -116,7 +116,7 @@ const Flex = styled.div`
 
 const ProductNewPrice = styled.div`
   color: var(--very-dark-blue-color);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 `;
 
@@ -131,6 +131,7 @@ const Discount = styled.div`
 const ProductOldPrice = styled.div`
   text-decoration: line-through;
   color: var(--grayish-blue-color);
+  font-size: 0.8rem;
   font-weight: bold;
   margin-top: 0.5rem;
   margin-bottom: 2rem;
@@ -142,7 +143,7 @@ const Counter = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: var(--light-grayish-blue-color);
-  padding: 1rem;
+  padding: 0 1rem;
   border-radius: 0.5rem;
 `;
 
