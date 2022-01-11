@@ -207,7 +207,7 @@ const Title = styled.h3`
 `;
 
 const Empty = styled.div`
-  height: 11rem;
+  height: 9rem;
   display: grid;
   place-items: center;
 `;
@@ -218,7 +218,7 @@ const Text = styled.p`
 `;
 
 const FilledBasket = styled.div`
-  min-height: 11rem;
+  min-height: 9rem;
   padding: 1.5rem;
 `;
 
