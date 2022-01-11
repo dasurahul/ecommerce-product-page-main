@@ -54,13 +54,13 @@ const Left = () => {
 export default Left;
 
 const LeftSection = styled.div`
-  max-width: 28rem;
+  max-width: 20rem;
 `;
 
 const ProductImage = styled.img`
   width: 100%;
   border-radius: 0.75rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 
   &:hover {
     cursor: pointer;
@@ -81,7 +81,7 @@ const Gallery = styled.div`
 `;
 
 const GalleryLargeImage = styled.img`
-  width: 30rem;
+  width: 25rem;
   border-radius: 0.75rem;
 `;
 
@@ -93,7 +93,6 @@ const CloseButton = styled.button`
   top: -2.5rem;
   right: 0;
   color: var(--white-color);
-  transform: scale(1.5);
 
   &:hover {
     cursor: pointer;
@@ -127,7 +126,7 @@ const ImagesContainer = styled.div`
 `;
 
 const ProductThumbnail = styled.img`
-  width: 6rem;
+  width: 4rem;
   border-radius: 0.5rem;
 
   &:hover {
